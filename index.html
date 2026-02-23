@@ -1,0 +1,1233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Places of the Golden Age — Virtual Field Trip</title>
+<style>
+  :root {
+    --royal: #003087;
+    --royal-light: #1A4FAF;
+    --royal-dim: #0A2060;
+    --royal-pale: #E8EEF8;
+    --green: #1A7A1A;
+    --green-light: #22A022;
+    --green-pale: #E6F5E6;
+    --green-bright: #2DC82D;
+    --white: #FFFFFF;
+    --off-white: #F7F9FC;
+    --light-grey: #EDF0F5;
+    --mid-grey: #C8D0DC;
+    --dark-grey: #4A5568;
+    --ink: #1A1F2E;
+    --shadow-blue: rgba(0,48,135,0.12);
+    --shadow-green: rgba(26,122,26,0.12);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--off-white);
+    background-image:
+      radial-gradient(ellipse at 0% 0%, rgba(0,48,135,0.06) 0%, transparent 50%),
+      radial-gradient(ellipse at 100% 100%, rgba(26,122,26,0.05) 0%, transparent 50%);
+    font-family: Arial, Helvetica, sans-serif;
+    color: var(--ink);
+    min-height: 100vh;
+    padding: 0 0 60px;
+  }
+
+  /* ===== HERO BANNER ===== */
+  .hero {
+    background: linear-gradient(135deg, var(--royal-dim) 0%, var(--royal) 50%, var(--royal-light) 100%);
+    padding: 52px 40px 44px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      repeating-linear-gradient(
+        45deg,
+        transparent,
+        transparent 40px,
+        rgba(255,255,255,0.02) 40px,
+        rgba(255,255,255,0.02) 41px
+      );
+  }
+
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--green), var(--green-bright), var(--green));
+  }
+
+  .hero-eyebrow {
+    font-family: Georgia, "Times New Roman", Times, serif;
+    font-size: 11px;
+    letter-spacing: 5px;
+    color: rgba(255,255,255,0.6);
+    text-transform: uppercase;
+    margin-bottom: 16px;
+    position: relative;
+  }
+
+  .hero h1 {
+    font-family: Georgia, "Times New Roman", Times, serif;
+    font-size: 58px;
+    font-weight: 700;
+    color: #FFFFFF;
+    line-height: 1.05;
+    letter-spacing: -1px;
+    position: relative;
+    text-shadow: 0 2px 30px rgba(0,0,0,0.3);
+  }
+
+  .hero h1 em {
+    font-style: italic;
+    color: var(--green-bright);
+  }
+
+  .hero-sub {
+    font-family: Georgia, "Times New Roman", Times, serif;
+    font-size: 20px;
+    font-weight: 300;
+    font-style: italic;
+    color: rgba(255,255,255,0.75);
+    margin-top: 12px;
+    letter-spacing: 1px;
+    position: relative;
+  }
+
+  .hero-meta {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+    flex-wrap: wrap;
+    position: relative;
+  }
+
+  .hero-badge {
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 20px;
+    padding: 5px 16px;
+    font-size: 12px;
+    color: rgba(255,255,255,0.8);
+    font-family: Arial, Helvetica, sans-serif;
+    letter-spacing: 1px;
+  }
+
+  /* ===== PAGE WRAPPER ===== */
+  .page-wrapper {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 36px 24px 0;
+  }
+
+  /* ===== STUDENT INFO BAR ===== */
+  .student-bar {
+    background: var(--white);
+    border: 1px solid var(--mid-grey);
+    border-radius: 8px;
+    padding: 18px 24px;
+    margin-bottom: 28px;
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 20px;
+    box-shadow: 0 2px 12px var(--shadow-blue);
+  }
+
+  .student-bar label {
+    font-size: 9px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--royal-light);
+    font-weight: 700;
+    display: block;
+    margin-bottom: 6px;
+  }
+
+  .student-bar input {
+    width: 100%;
+    border: none;
+    border-bottom: 2px solid var(--mid-grey);
+    padding: 5px 2px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 15px;
+    color: var(--ink);
+    background: transparent;
+    transition: border-color 0.2s;
+  }
+
+  .student-bar input:focus {
+    outline: none;
+    border-bottom-color: var(--royal);
+  }
+
+  /* ===== BIG QUESTION CARD ===== */
+  .big-question-card {
+    background: var(--white);
+    border-radius: 8px;
+    border: 1px solid var(--mid-grey);
+    border-top: 5px solid var(--royal);
+    padding: 28px 32px;
+    margin-bottom: 28px;
+    box-shadow: 0 2px 16px var(--shadow-blue);
+  }
+
+  .bq-eyebrow {
+    font-size: 10px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--green);
+    font-weight: 700;
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .bq-eyebrow::after {
+    content: '';
+    flex: 1;
+    height: 2px;
+    background: var(--green-pale);
+    border-radius: 2px;
+  }
+
+  .big-question-text {
+    font-family: Georgia, "Times New Roman", Times, serif;
+    font-size: 26px;
+    font-weight: 600;
+    font-style: italic;
+    color: var(--royal);
+    line-height: 1.4;
+    margin-bottom: 18px;
+    padding: 20px 24px;
+    background: var(--royal-pale);
+    border-radius: 6px;
+    border-left: 4px solid var(--royal);
+  }
+
+  .bq-body {
+    font-size: 15px;
+    color: var(--dark-grey);
+    line-height: 1.75;
+  }
+
+  .bq-body p { margin-bottom: 10px; }
+  .bq-body p:last-child { margin-bottom: 0; }
+  .bq-body strong { color: var(--ink); }
+
+  /* ===== STEP CARDS ===== */
+  .step-card {
+    background: var(--white);
+    border-radius: 8px;
+    border: 1px solid var(--mid-grey);
+    margin-bottom: 24px;
+    box-shadow: 0 2px 12px var(--shadow-blue);
+    overflow: hidden;
+  }
+
+  .step-header {
+    padding: 18px 24px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    border-bottom: 1px solid var(--light-grey);
+  }
+
+  .step-header.royal { background: linear-gradient(135deg, var(--royal-dim), var(--royal)); }
+  .step-header.green { background: linear-gradient(135deg, #0F4F0F, var(--green)); }
+  .step-header.mixed { background: linear-gradient(135deg, var(--royal), #1A5F8A); }
+  .step-header.deep { background: linear-gradient(135deg, #0A3A0A, #1A5F1A); }
+  .step-header.accent { background: linear-gradient(135deg, var(--royal-dim), #1A3A6A); }
+
+  .step-num-badge {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.15);
+    border: 2px solid rgba(255,255,255,0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: Georgia, "Times New Roman", Times, serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: white;
+    flex-shrink: 0;
+  }
+
+  .step-header-text { flex: 1; }
+
+  .step-title {
+    font-family: Georgia, "Times New Roman", Times, serif;
+    font-size: 18px;
+    font-weight: 600;
+    color: white;
+    letter-spacing: 1px;
+    line-height: 1.2;
+  }
+
+  .step-subtitle {
+    font-size: 12px;
+    color: rgba(255,255,255,0.7);
+    margin-top: 3px;
+    font-style: italic;
+  }
+
+  .step-body { padding: 24px; }
+
+  /* ===== INSTRUCTION BLOCKS ===== */
+  .instr {
+    font-size: 15px;
+    color: var(--dark-grey);
+    line-height: 1.7;
+    margin-bottom: 18px;
+    padding: 14px 18px;
+    border-radius: 6px;
+    background: var(--light-grey);
+    border-left: 4px solid var(--mid-grey);
+  }
+
+  .instr.royal-accent {
+    background: var(--royal-pale);
+    border-left-color: var(--royal);
+    color: var(--ink);
+  }
+
+  .instr.green-accent {
+    background: var(--green-pale);
+    border-left-color: var(--green);
+    color: var(--ink);
+  }
+
+  .instr strong { color: var(--royal); }
+  .instr.green-accent strong { color: var(--green); }
+
+  /* ===== DESTINATION CARDS ===== */
+  .destinations-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 16px;
+    margin-bottom: 20px;
+  }
+
+  .destination-card {
+    border-radius: 8px;
+    border: 1px solid var(--mid-grey);
+    overflow: hidden;
+    transition: box-shadow 0.2s, transform 0.2s;
+    background: var(--white);
+  }
+
+  .destination-card:hover {
+    box-shadow: 0 6px 24px var(--shadow-blue);
+    transform: translateY(-2px);
+  }
+
+  .dest-header {
+    padding: 14px 16px 12px;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .dest-header.royal-bg { background: var(--royal); }
+  .dest-header.green-bg { background: var(--green); }
+  .dest-header.teal-bg { background: #0A5A6A; }
+  .dest-header.deep-blue-bg { background: #1A2A6A; }
+  .dest-header.forest-bg { background: #1A4A1A; }
+  .dest-header.navy-bg { background: #0A1A4A; }
+
+  .dest-emoji { font-size: 24px; flex-shrink: 0; margin-top: 2px; }
+
+  .dest-name {
+    font-family: Georgia, "Times New Roman", Times, serif;
+    font-size: 17px;
+    font-weight: 700;
+    color: white;
+    line-height: 1.2;
+  }
+
+  .dest-location {
+    font-size: 11px;
+    color: rgba(255,255,255,0.7);
+    margin-top: 2px;
+    font-style: italic;
+  }
+
+  .dest-body { padding: 14px 16px; }
+
+  .dest-desc {
+    font-size: 13px;
+    color: var(--dark-grey);
+    line-height: 1.6;
+    margin-bottom: 10px;
+  }
+
+  .dest-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 5px 12px;
+    border-radius: 4px;
+    transition: background 0.2s;
+  }
+
+  /* ===== DISTRICT-SAFE LINK DISPLAY ===== */
+  .dest-link {
+    cursor: default;
+    user-select: text;
+  }
+  .url-text {
+    margin-top: 8px;
+    padding: 8px 10px;
+    border-radius: 6px;
+    border: 1px dashed var(--mid-grey);
+    background: var(--off-white);
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    font-size: 12px;
+    color: var(--ink);
+    word-break: break-all;
+    line-height: 1.4;
+  }
+  .url-text small {
+    display: inline-block;
+    font-size: 10px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--dark-grey);
+    margin-right: 6px;
+  }
+
+
+  .dest-link.royal-link {
+    color: var(--royal);
+    background: var(--royal-pale);
+    border: 1px solid rgba(0,48,135,0.2);
+  }
+
+  .dest-link.royal-link:hover { background: #D0DCF5; }
+
+  .dest-link.green-link {
+    color: var(--green);
+    background: var(--green-pale);
+    border: 1px solid rgba(26,122,26,0.2);
+  }
+
+  .dest-link.green-link:hover { background: #CCE8CC; }
+
+  .dest-tag {
+    display: inline-block;
+    font-size: 9px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 10px;
+    margin-bottom: 8px;
+  }
+
+  .dest-tag.mosque { background: var(--royal-pale); color: var(--royal); }
+  .dest-tag.palace { background: #EEE8F8; color: #5A3A8A; }
+  .dest-tag.knowledge { background: var(--green-pale); color: var(--green); }
+  .dest-tag.trade { background: #FFF3E0; color: #8A5A00; }
+  .dest-tag.city { background: #E8F4F8; color: #0A5A7A; }
+
+  /* ===== DIVIDER ===== */
+  .section-divider {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 20px 0 16px;
+  }
+
+  .section-divider::before, .section-divider::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--mid-grey);
+  }
+
+  .section-divider span {
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--dark-grey);
+    font-weight: 700;
+    white-space: nowrap;
+  }
+
+  /* ===== RESPONSE FIELDS ===== */
+  .response-block { margin-bottom: 20px; }
+
+  .response-block:last-child { margin-bottom: 0; }
+
+  .response-label {
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: var(--royal);
+    margin-bottom: 6px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .response-label.green-label { color: var(--green); }
+
+  .response-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--light-grey);
+  }
+
+  .response-prompt {
+    font-size: 14px;
+    color: var(--dark-grey);
+    line-height: 1.6;
+    margin-bottom: 8px;
+    font-style: italic;
+  }
+
+  textarea {
+    width: 100%;
+    border: 2px solid var(--light-grey);
+    border-radius: 6px;
+    padding: 12px 14px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    color: var(--ink);
+    background: var(--white);
+    resize: vertical;
+    line-height: 1.6;
+    min-height: 90px;
+    transition: border-color 0.2s;
+  }
+
+  textarea:focus {
+    outline: none;
+    border-color: var(--royal);
+  }
+
+  textarea::placeholder { color: #A0AABA; }
+
+  /* ===== INPUT FIELDS ===== */
+  .info-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin-bottom: 20px;
+  }
+
+  .info-field label {
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--royal-light);
+    font-weight: 700;
+    display: block;
+    margin-bottom: 5px;
+  }
+
+  .info-field input {
+    width: 100%;
+    border: 2px solid var(--light-grey);
+    border-radius: 6px;
+    padding: 9px 12px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    color: var(--ink);
+    background: var(--white);
+    transition: border-color 0.2s;
+  }
+
+  .info-field input:focus {
+    outline: none;
+    border-color: var(--royal);
+  }
+
+  .info-field.full { grid-column: 1 / -1; }
+
+  /* ===== RADIO SCALES ===== */
+  .scale-wrap { margin: 8px 0 4px; }
+
+  .scale-options {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  .scale-options label {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 13px;
+    color: var(--ink);
+    cursor: pointer;
+    padding: 6px 14px;
+    border: 2px solid var(--light-grey);
+    border-radius: 20px;
+    background: var(--white);
+    transition: all 0.15s;
+    font-weight: 400;
+  }
+
+  .scale-options label:hover {
+    border-color: var(--royal);
+    background: var(--royal-pale);
+    color: var(--royal);
+  }
+
+  .scale-options input[type="radio"] { cursor: pointer; accent-color: var(--royal); }
+
+  /* ===== THINKING PROMPTS ===== */
+  .thinking-chips {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 12px;
+  }
+
+  .thinking-chip {
+    font-size: 12px;
+    color: var(--green);
+    background: var(--green-pale);
+    border: 1px solid rgba(26,122,26,0.2);
+    border-radius: 16px;
+    padding: 4px 12px;
+    font-style: italic;
+  }
+
+  /* ===== PRINT BUTTON ===== */
+  .actions-bar {
+    display: flex;
+    justify-content: center;
+    gap: 14px;
+    margin-top: 32px;
+    flex-wrap: wrap;
+  }
+
+  .btn {
+    padding: 12px 28px;
+    border-radius: 6px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .btn-royal {
+    background: var(--royal);
+    color: white;
+    box-shadow: 0 3px 12px var(--shadow-blue);
+  }
+
+  .btn-royal:hover { background: var(--royal-light); }
+
+  .btn-green {
+    background: var(--green);
+    color: white;
+    box-shadow: 0 3px 12px var(--shadow-green);
+  }
+
+  .btn-green:hover { background: var(--green-light); }
+
+  /* ===== FOOTER ===== */
+  .footer {
+    margin-top: 48px;
+    text-align: center;
+    padding: 20px;
+    border-top: 3px solid var(--light-grey);
+    background: var(--white);
+  }
+
+  .footer-inner {
+    max-width: 900px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .footer-school {
+    font-family: Georgia, "Times New Roman", Times, serif;
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--royal);
+  }
+
+  .footer-class {
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--dark-grey);
+  }
+
+  .footer-accent {
+    width: 40px;
+    height: 4px;
+    background: linear-gradient(90deg, var(--royal), var(--green));
+    border-radius: 2px;
+  }
+
+  @media (max-width: 640px) {
+    .hero h1 { font-size: 38px; }
+    .student-bar { grid-template-columns: 1fr; }
+    .info-grid { grid-template-columns: 1fr; }
+    .destinations-grid { grid-template-columns: 1fr; }
+    .footer-inner { justify-content: center; text-align: center; }
+  }
+
+  @media print {
+    body { background: white; }
+    .hero { background: var(--royal) !important; -webkit-print-color-adjust: exact; }
+    .btn, .actions-bar { display: none; }
+    textarea { border: 1px solid #ccc; min-height: 70px; }
+  }
+</style>
+</head>
+<body>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-eyebrow">East Jessamine Middle School · 7th Grade World History</div>
+    <h1>Places of the <em>Golden Age</em></h1>
+    <div class="hero-sub">A Virtual Field Trip Through the Islamic World · 600–1300 CE</div>
+    <div class="hero-meta">
+      <span class="hero-badge">🕌 Mosques & Sacred Sites</span>
+      <span class="hero-badge">📚 Centers of Knowledge</span>
+      <span class="hero-badge">🏰 Palaces & Courts</span>
+      <span class="hero-badge">🗺 Trade Cities</span>
+    </div>
+  </div>
+
+  <div class="page-wrapper">
+
+    <!-- STUDENT INFO -->
+    <div class="student-bar">
+      <div>
+        <label>Your Name</label>
+        <input type="text" placeholder="First and Last Name">
+      </div>
+      <div>
+        <label>Period</label>
+        <input type="text" placeholder="e.g. 3rd">
+      </div>
+      <div>
+        <label>Date</label>
+        <input type="text" placeholder="Today's date">
+      </div>
+    </div>
+
+    <!-- BIG QUESTION -->
+    <div class="big-question-card">
+      <div class="bq-eyebrow">✦ Your Question for Today</div>
+      <div class="big-question-text">"Did the achievements of the Islamic Golden Age change the course of civilization — or would the world have gotten there anyway?"</div>
+      <div class="bq-body">
+        <p>Today you are going on a virtual field trip through some of the most significant places ever built during the Islamic Golden Age. You'll walk through mosques, palaces, centers of learning, and ancient trade cities — all from your device.</p>
+        <p>Your job is to <strong>choose one place that genuinely interests you</strong>, explore it deeply, and build an argument that answers the big question above. The best responses won't just describe what a place looks like — they'll explain <em>why it existed, who built it, and what it tells us about the civilization that created it.</em></p>
+        <p>Next week you'll be running one of these caliphates in a simulation. The deeper you understand these places now, the better decisions you'll make then.</p>
+      </div>
+    </div>
+
+    <!-- STEP 1: THE DESTINATIONS -->
+    <div class="step-card">
+      <div class="step-header royal">
+        <div class="step-num-badge">1</div>
+        <div class="step-header-text">
+          <div class="step-title">Choose Your Destination</div>
+          <div class="step-subtitle">Explore the links below — pick the place that interests you most</div>
+        </div>
+      </div>
+      <div class="step-body">
+
+        <div class="instr royal-accent">
+          <strong>How to explore:</strong> Click the links below and spend a few minutes browsing each place before you decide. Some have 360° views, some have photo galleries, some have detailed histories. Follow what pulls your attention. When one place makes you want to keep reading — that's your destination.
+        </div>
+
+        <div class="instr royal-accent" style="margin-top: 12px;">
+          <strong>District-safe note:</strong> Links are shown as copy/paste text (not clickable) to avoid web-filter blocks. If a site is blocked, try a different destination.
+        </div>
+
+
+        <div class="section-divider"><span>🕌 Mosques & Sacred Sites</span></div>
+        <div class="destinations-grid">
+
+          <div class="destination-card">
+            <div class="dest-header royal-bg">
+              <div class="dest-emoji">🕌</div>
+              <div>
+                <div class="dest-name">Great Mosque of Córdoba</div>
+                <div class="dest-location">Al-Andalus (Spain) · 784 CE</div>
+              </div>
+            </div>
+            <div class="dest-body">
+              <span class="dest-tag mosque">Mosque</span>
+              <div class="dest-desc">One of the most stunning examples of Islamic architecture ever built — famous for its forest of 856 columns with striped red-and-white arches. Built by the Umayyads in conquered Spain.</div>
+              <div class="dest-link royal-link">🌐 Explore on Google Arts</div>
+              <div class="url-text"><small>Copy/paste:</small> https://artsandculture.google.com/story/the-mosque-cathedral-of-cordoba-spain-unesco/rwWx9aQi1Pc8Lg?hl=en</div>
+            </div>
+          </div>
+
+          <div class="destination-card">
+            <div class="dest-header deep-blue-bg">
+              <div class="dest-emoji">🕌</div>
+              <div>
+                <div class="dest-name">Hagia Sophia</div>
+                <div class="dest-location">Constantinople (Istanbul) · 537 CE / converted 1453</div>
+              </div>
+            </div>
+            <div class="dest-body">
+              <span class="dest-tag mosque">Mosque / Cathedral</span>
+              <div class="dest-desc">Originally a Byzantine cathedral, converted to a mosque after the Ottoman conquest. One of the greatest architectural achievements in human history — its massive dome still inspires awe.</div>
+              <div class="dest-link royal-link">🌐 360° Virtual Tour</div>
+              <div class="url-text"><small>Copy/paste:</small> https://360tr.com/hagia-sophia-upper-floor-1-panorama-virtual-tour_89ef68d7b5_en.html</div>
+            </div>
+          </div>
+
+          <div class="destination-card">
+            <div class="dest-header green-bg">
+              <div class="dest-emoji">🕌</div>
+              <div>
+                <div class="dest-name">Al-Masjid an-Nabawi</div>
+                <div class="dest-location">Medina, Arabia · 622 CE (original)</div>
+              </div>
+            </div>
+            <div class="dest-body">
+              <span class="dest-tag mosque">Sacred Site</span>
+              <div class="dest-desc">The Prophet's Mosque — built by Muhammad himself. The second holiest site in Islam and the political heart of the Rashidun Caliphate. Expanded dramatically over the centuries.</div>
+              <div class="dest-link green-link">🌐 360° Immersive VR Tour</div>
+              <div class="url-text"><small>Copy/paste:</small> https://vr.qurancomplex.gov.sa/msq/</div>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="section-divider"><span>🏰 Palaces & Courts</span></div>
+        <div class="destinations-grid">
+
+          <div class="destination-card">
+            <div class="dest-header navy-bg">
+              <div class="dest-emoji">🏰</div>
+              <div>
+                <div class="dest-name">The Alhambra</div>
+                <div class="dest-location">Granada, Al-Andalus · 13th–14th century</div>
+              </div>
+            </div>
+            <div class="dest-body">
+              <span class="dest-tag palace">Palace</span>
+              <div class="dest-desc">The last great Islamic palace in Europe — a jaw-dropping complex of courtyards, fountains, geometric tile work, and Arabic calligraphy carved into every surface. A monument to Islamic civilization at its peak.</div>
+              <div class="dest-link royal-link">🌐 Explore on Google Arts</div>
+              <div class="url-text"><small>Copy/paste:</small> https://artsandculture.google.com/entity/alhambra/m07h_j?hl=en</div>
+            </div>
+          </div>
+
+          <div class="destination-card">
+            <div class="dest-header teal-bg">
+              <div class="dest-emoji">🏛</div>
+              <div>
+                <div class="dest-name">Ctesiphon — Abbasid Palace Ruins</div>
+                <div class="dest-location">Baghdad (Ctesiphon), Iraq · 8th–13th century</div>
+              </div>
+            </div>
+            <div class="dest-body">
+              <span class="dest-tag palace">Palace / Ruins</span>
+              <div class="dest-desc">What remains of the once-great Abbasid capital. The round city of Baghdad was considered the most sophisticated urban center in the medieval world — explore what historians have pieced together.</div>
+              <div class="dest-link green-link">🌐 World History Encyclopedia</div>
+              <div class="url-text"><small>Copy/paste:</small> https://www.worldhistory.org/ctesiphon/</div>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="section-divider"><span>📚 Centers of Knowledge</span></div>
+        <div class="destinations-grid">
+
+          <div class="destination-card">
+            <div class="dest-header green-bg">
+              <div class="dest-emoji">📚</div>
+              <div>
+                <div class="dest-name">House of Wisdom — Baghdad</div>
+                <div class="dest-location">Baghdad, Iraq · c. 830 CE</div>
+              </div>
+            </div>
+            <div class="dest-body">
+              <span class="dest-tag knowledge">Knowledge</span>
+              <div class="dest-desc">The greatest library and research center of the medieval world. Scholars translated Greek, Persian, and Indian texts here — laying the foundation for algebra, astronomy, and medicine. Destroyed by the Mongols in 1258.</div>
+              <div class="dest-link green-link">🌐 1001 Inventions</div>
+              <div class="url-text"><small>Copy/paste:</small> https://www.1001inventions.com/house-of-wisdom/</div>
+            </div>
+          </div>
+
+          <div class="destination-card">
+            <div class="dest-header forest-bg">
+              <div class="dest-emoji">📜</div>
+              <div>
+                <div class="dest-name">Libraries of Timbuktu</div>
+                <div class="dest-location">Mali, West Africa · 13th–16th century</div>
+              </div>
+            </div>
+            <div class="dest-body">
+              <span class="dest-tag knowledge">Knowledge</span>
+              <div class="dest-desc">Over 700,000 manuscripts survive in Timbuktu's private libraries — covering astronomy, mathematics, medicine, and Islamic law. A testament to how far Islamic scholarship spread through trade.</div>
+              <div class="dest-link green-link">🌐 Explore on Google Arts</div>
+              <div class="url-text"><small>Copy/paste:</small> https://artsandculture.google.com/project/timbuktu-manuscripts</div>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="section-divider"><span>🗺 Trade Cities & Routes</span></div>
+        <div class="destinations-grid">
+
+          <div class="destination-card">
+            <div class="dest-header royal-bg">
+              <div class="dest-emoji">🗺</div>
+              <div>
+                <div class="dest-name">Samarkand</div>
+                <div class="dest-location">Uzbekistan · Silk Road Hub</div>
+              </div>
+            </div>
+            <div class="dest-body">
+              <span class="dest-tag trade">Trade City</span>
+              <div class="dest-desc">The jewel of the Silk Road — where paper-making first entered the Islamic world after the Battle of Talas. A crossroads of Chinese, Persian, Arab, and Indian civilization.</div>
+              <div class="dest-link royal-link">🌐 Explore on Google Arts</div>
+              <div class="url-text"><small>Copy/paste:</small> https://artsandculture.google.com/entity/samarkand/m0dl3g?hl=en</div>
+            </div>
+          </div>
+
+          <div class="destination-card">
+            <div class="dest-header teal-bg">
+              <div class="dest-emoji">⛵</div>
+              <div>
+                <div class="dest-name">Indian Ocean Trade Routes</div>
+                <div class="dest-location">Arabia to India to China · 8th–13th century</div>
+              </div>
+            </div>
+            <div class="dest-body">
+              <span class="dest-tag trade">Trade Route</span>
+              <div class="dest-desc">Abbasid merchants dominated the Indian Ocean long before European explorers arrived. Arab dhow captains connected three continents — carrying silk, spices, porcelain, and ideas.</div>
+              <div class="dest-link green-link">🌐 OER Project</div>
+              <div class="url-text"><small>Copy/paste:</small> https://www.oerproject.com/OER-Materials/OER-Media/HTML-Articles/Origins/Unit5/Indian-Ocean-Routes</div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+
+    <!-- STEP 2: RECORD YOUR DESTINATION -->
+    <div class="step-card">
+      <div class="step-header green">
+        <div class="step-num-badge">2</div>
+        <div class="step-header-text">
+          <div class="step-title">Record Your Destination</div>
+          <div class="step-subtitle">Identify the place you chose and what you know about it</div>
+        </div>
+      </div>
+      <div class="step-body">
+
+        <div class="instr green-accent">
+          <strong>Before you write:</strong> Spend a few minutes actually exploring your destination. Look at images, read the history, follow any links that interest you. The more you know about it, the stronger your argument will be in Step 4.
+        </div>
+
+        <div class="info-grid">
+          <div class="info-field full">
+            <label>Name of Your Destination</label>
+            <input type="text" placeholder="e.g. The Alhambra, House of Wisdom, Great Mosque of Córdoba...">
+          </div>
+          <div class="info-field">
+            <label>Approximate Date Built or Active</label>
+            <input type="text" placeholder="e.g. 784 CE, 13th century, c. 830 CE...">
+          </div>
+          <div class="info-field">
+            <label>Location (City & Caliphate / Region)</label>
+            <input type="text" placeholder="e.g. Córdoba, Umayyad Al-Andalus...">
+          </div>
+          <div class="info-field full">
+            <label>Source / Link Used</label>
+            <input type="text" placeholder="Paste the URL here">
+          </div>
+        </div>
+
+        <div class="response-block">
+          <div class="response-label">Describe It In Your Own Words</div>
+          <div class="response-prompt">What is this place? What does it look like? What was it used for? Write as if you're describing it to someone who has never seen or heard of it — be specific.</div>
+          <textarea placeholder="This place is... It was built by... It was used for... What makes it remarkable is..."></textarea>
+        </div>
+
+        <div class="response-block">
+          <div class="response-label green-label">Who Built It — And Why?</div>
+          <div class="response-prompt">Who commissioned or created this place? What does it tell you about what that civilization valued? Power? Knowledge? Faith? Beauty? Trade?</div>
+          <textarea placeholder="This was built by... They built it because... It tells me that this civilization valued..."></textarea>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- STEP 3: THE CONNECTION -->
+    <div class="step-card">
+      <div class="step-header mixed">
+        <div class="step-num-badge">3</div>
+        <div class="step-header-text">
+          <div class="step-title">Make the Connection</div>
+          <div class="step-subtitle">Link your destination to what we have already studied</div>
+        </div>
+      </div>
+      <div class="step-body">
+
+        <div class="instr royal-accent">
+          <strong>Think back to the webquest.</strong> You already know about the Five Pillars, how religion shaped governance, the role of trade, and how the caliphates expanded. Where does your place fit into that picture?
+        </div>
+
+        <div class="thinking-chips">
+          <span class="thinking-chip">Religion & faith</span>
+          <span class="thinking-chip">Trade & wealth</span>
+          <span class="thinking-chip">Governance & power</span>
+          <span class="thinking-chip">Cultural exchange</span>
+          <span class="thinking-chip">Scholarship & knowledge</span>
+          <span class="thinking-chip">Military expansion</span>
+        </div>
+
+        <div class="response-block">
+          <div class="response-label">The Connection to Our Studies</div>
+          <div class="response-prompt">How does your destination connect to one of the themes above — or to something specific from the webquest? Don't just name the connection, explain <em>how</em> they are linked.</div>
+          <textarea placeholder="This connects to what we studied about [theme] because..."></textarea>
+        </div>
+
+        <div class="response-block">
+          <div class="response-label green-label">Which Caliphate Does This Belong To?</div>
+          <div class="response-prompt">Does your place connect to the Rashidun, Umayyad, or Abbasid Caliphate — or more than one? What does it tell you about that caliphate's priorities and strengths?</div>
+          <textarea placeholder="This place belongs to the ___ Caliphate because... This tells me that caliphate prioritized..."></textarea>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- STEP 4: THE ARGUMENT -->
+    <div class="step-card">
+      <div class="step-header deep">
+        <div class="step-num-badge">4</div>
+        <div class="step-header-text">
+          <div class="step-title">Build Your Argument</div>
+          <div class="step-subtitle">Answer the big question using your destination as evidence</div>
+        </div>
+      </div>
+      <div class="step-body">
+
+        <div class="instr green-accent">
+          <strong>The Big Question:</strong> <em>"Did the achievements of the Islamic Golden Age change the course of civilization — or would the world have gotten there anyway?"</em> Use your destination as your evidence. There is no single right answer — but your argument must be backed by specific details.
+        </div>
+
+        <div class="response-block">
+          <div class="response-label">Your Position</div>
+          <div class="response-prompt">Based on your destination, which side do you take?</div>
+          <div class="scale-wrap">
+            <div class="scale-options">
+              <label><input type="radio" name="position" value="changed"> 🌍 It Changed Everything</label>
+              <label><input type="radio" name="position" value="somewhat"> ⚖ It Mattered, But...</label>
+              <label><input type="radio" name="position" value="nochange"> 🔄 The World Would Have Caught Up</label>
+            </div>
+          </div>
+        </div>
+
+        <div class="response-block">
+          <div class="response-label green-label">Make the Case — Your Full Argument</div>
+          <div class="response-prompt">Write 4–6 sentences minimum. State your position clearly. Use your destination as specific evidence. Explain <em>why</em> it matters. Name dates, people, or ideas — not just general statements.</div>
+          <textarea style="min-height: 150px;" placeholder="My destination is [place]. I believe this achievement [did / did not] change the course of civilization because... The specific evidence for this is... Without this place or achievement, the world might have..."></textarea>
+        </div>
+
+        <div class="response-block">
+          <div class="response-label">The Counterargument</div>
+          <div class="response-prompt">What would someone who disagrees with you say? State their best argument — then explain why yours is stronger.</div>
+          <textarea placeholder="Someone who disagrees might argue that... However, I still believe... because..."></textarea>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- STEP 5: REFLECTION -->
+    <div class="step-card">
+      <div class="step-header accent">
+        <div class="step-num-badge">5</div>
+        <div class="step-header-text">
+          <div class="step-title">Final Reflection</div>
+          <div class="step-subtitle">Look back at what you discovered — and look ahead to next week</div>
+        </div>
+      </div>
+      <div class="step-body">
+
+        <div class="response-block">
+          <div class="response-label">What Surprised You?</div>
+          <div class="response-prompt">What was the most unexpected thing you discovered today — something you didn't know before, or something that changed how you thought about this era?</div>
+          <textarea placeholder="I was surprised to discover that..."></textarea>
+        </div>
+
+        <div class="response-block">
+          <div class="response-label green-label">The Simulation Connection</div>
+          <div class="response-prompt">Next week you will be running a caliphate in the simulation. Based on what you explored today — what is ONE decision you think your caliphate should prioritize, and why?</div>
+          <textarea placeholder="Based on what I found today, I think my caliphate should prioritize... because... The place I visited showed me that..."></textarea>
+        </div>
+
+        <div class="response-block">
+          <div class="response-label">Rate This Place</div>
+          <div class="response-prompt">How significant was this destination to the development of civilization?</div>
+          <div class="scale-wrap">
+            <div class="scale-options">
+              <label><input type="radio" name="significance" value="1"> 1 — Minor</label>
+              <label><input type="radio" name="significance" value="2"> 2</label>
+              <label><input type="radio" name="significance" value="3"> 3 — Moderate</label>
+              <label><input type="radio" name="significance" value="4"> 4</label>
+              <label><input type="radio" name="significance" value="5"> 5 — World-Changing</label>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- SUBMISSION GUIDE -->
+    <div class="step-card" style="border-top: 5px solid var(--green);">
+      <div class="step-header green">
+        <div class="step-num-badge">📤</div>
+        <div class="step-header-text">
+          <div class="step-title">How to Save & Submit Your Work</div>
+          <div class="step-subtitle">Follow every step carefully — do not skip naming your file!</div>
+        </div>
+      </div>
+      <div class="step-body">
+
+        <div class="instr green-accent" style="margin-bottom: 24px;">
+          <strong>Before you do anything else — make sure all your responses are typed and complete.</strong> Scroll back through every section and check. Once you save as a PDF, what you see is what your teacher gets.
+        </div>
+
+        <!-- STEP A: NAME YOUR FILE -->
+        <div style="margin-bottom: 20px;">
+          <div class="response-label" style="font-size: 13px; margin-bottom: 10px;">📝 Step 1 — Name Your File First</div>
+          <div style="background: #FFF8E1; border: 2px solid #F0C040; border-radius: 8px; padding: 16px 20px; font-size: 14px; color: var(--ink); line-height: 1.7;">
+            ⚠️ <strong>Do NOT leave your file named "Untitled."</strong> Your teacher cannot find your work if it has no name!<br><br>
+            Your file must be named in this format:<br>
+            <div style="font-family: 'Courier New', monospace; background: var(--light-grey); border-radius: 4px; padding: 8px 14px; margin: 10px 0; font-size: 15px; letter-spacing: 1px; color: var(--royal);">
+              LastName_FirstName_GoldenAge
+            </div>
+            <strong>Example:</strong> <span style="font-family: 'Courier New', monospace; color: var(--green);">Smith_Jordan_GoldenAge</span><br><br>
+            You will type this name in Step 3 below when the Save dialog appears.
+          </div>
+        </div>
+
+        <!-- STEP B: SAVE AS PDF -->
+        <div style="margin-bottom: 20px;">
+          <div class="response-label" style="font-size: 13px; margin-bottom: 10px;">🖨 Step 2 — Save as PDF</div>
+          <div style="display: flex; flex-direction: column; gap: 10px;">
+
+            <div style="display: flex; gap: 14px; align-items: flex-start; background: var(--white); border: 1px solid var(--mid-grey); border-radius: 6px; padding: 12px 16px;">
+              <div style="background: var(--royal); color: white; font-family: Georgia, "Times New Roman", Times, serif; font-size: 15px; font-weight: 700; border-radius: 50%; width: 30px; height: 30px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">1</div>
+              <div style="font-size: 14px; color: var(--ink); line-height: 1.6;">Click the <strong>"🖨 Print / Save as PDF"</strong> button below. A print dialog box will open on your screen.</div>
+            </div>
+
+            <div style="display: flex; gap: 14px; align-items: flex-start; background: var(--white); border: 1px solid var(--mid-grey); border-radius: 6px; padding: 12px 16px;">
+              <div style="background: var(--royal); color: white; font-family: Georgia, "Times New Roman", Times, serif; font-size: 15px; font-weight: 700; border-radius: 50%; width: 30px; height: 30px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">2</div>
+              <div style="font-size: 14px; color: var(--ink); line-height: 1.6;">Look for the <strong>"Destination"</strong> dropdown at the top of the print dialog. Click the dropdown and select <strong>"Save as PDF."</strong></div>
+            </div>
+
+            <div style="display: flex; gap: 14px; align-items: flex-start; background: #FFF8E1; border: 1px solid #F0C040; border-radius: 6px; padding: 12px 16px;">
+              <div style="background: var(--green); color: white; font-family: Georgia, "Times New Roman", Times, serif; font-size: 15px; font-weight: 700; border-radius: 50%; width: 30px; height: 30px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">3</div>
+              <div style="font-size: 14px; color: var(--ink); line-height: 1.6;">Click <strong>"Save."</strong> A file name box will appear. <strong>Delete whatever is already there</strong> and type your file name exactly like this:<br>
+              <span style="font-family: 'Courier New', monospace; background: var(--light-grey); padding: 2px 8px; border-radius: 3px; color: var(--royal);">LastName_FirstName_GoldenAge</span></div>
+            </div>
+
+            <div style="display: flex; gap: 14px; align-items: flex-start; background: var(--white); border: 1px solid var(--mid-grey); border-radius: 6px; padding: 12px 16px;">
+              <div style="background: var(--royal); color: white; font-family: Georgia, "Times New Roman", Times, serif; font-size: 15px; font-weight: 700; border-radius: 50%; width: 30px; height: 30px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">4</div>
+              <div style="font-size: 14px; color: var(--ink); line-height: 1.6;">Choose where to save it. Select <strong>"My Files"</strong> or <strong>"Downloads"</strong> on your Chromebook. Then click <strong>"Save."</strong> Your PDF is now saved on your device.</div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- STEP C: SUBMIT TO GOOGLE CLASSROOM -->
+        <div style="margin-bottom: 24px;">
+          <div class="response-label" style="font-size: 13px; margin-bottom: 10px;">📚 Step 3 — Submit to Google Classroom</div>
+          <div style="display: flex; flex-direction: column; gap: 10px;">
+
+            <div style="display: flex; gap: 14px; align-items: flex-start; background: var(--white); border: 1px solid var(--mid-grey); border-radius: 6px; padding: 12px 16px;">
+              <div style="background: var(--green); color: white; font-family: Georgia, "Times New Roman", Times, serif; font-size: 15px; font-weight: 700; border-radius: 50%; width: 30px; height: 30px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">1</div>
+              <div style="font-size: 14px; color: var(--ink); line-height: 1.6;">Open a new tab and go to <strong>Google Classroom</strong>. Find your <strong>7th Grade World History</strong> class and click on it.</div>
+            </div>
+
+            <div style="display: flex; gap: 14px; align-items: flex-start; background: var(--white); border: 1px solid var(--mid-grey); border-radius: 6px; padding: 12px 16px;">
+              <div style="background: var(--green); color: white; font-family: Georgia, "Times New Roman", Times, serif; font-size: 15px; font-weight: 700; border-radius: 50%; width: 30px; height: 30px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">2</div>
+              <div style="font-size: 14px; color: var(--ink); line-height: 1.6;">Click on the <strong>"Classwork"</strong> tab at the top. Find the assignment called <strong>"Places of the Golden Age — Virtual Field Trip"</strong> and click on it.</div>
+            </div>
+
+            <div style="display: flex; gap: 14px; align-items: flex-start; background: var(--white); border: 1px solid var(--mid-grey); border-radius: 6px; padding: 12px 16px;">
+              <div style="background: var(--green); color: white; font-family: Georgia, "Times New Roman", Times, serif; font-size: 15px; font-weight: 700; border-radius: 50%; width: 30px; height: 30px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">3</div>
+              <div style="font-size: 14px; color: var(--ink); line-height: 1.6;">Click the <strong>"View Assignment"</strong> button. On the assignment page, look for the <strong>"Add or Create"</strong> button and click it.</div>
+            </div>
+
+            <div style="display: flex; gap: 14px; align-items: flex-start; background: var(--white); border: 1px solid var(--mid-grey); border-radius: 6px; padding: 12px 16px;">
+              <div style="background: var(--green); color: white; font-family: Georgia, "Times New Roman", Times, serif; font-size: 15px; font-weight: 700; border-radius: 50%; width: 30px; height: 30px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">4</div>
+              <div style="font-size: 14px; color: var(--ink); line-height: 1.6;">A menu will appear. Select <strong>"File"</strong> from the options. Then click <strong>"Select files from your device."</strong></div>
+            </div>
+
+            <div style="display: flex; gap: 14px; align-items: flex-start; background: var(--white); border: 1px solid var(--mid-grey); border-radius: 6px; padding: 12px 16px;">
+              <div style="background: var(--green); color: white; font-family: Georgia, "Times New Roman", Times, serif; font-size: 15px; font-weight: 700; border-radius: 50%; width: 30px; height: 30px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">5</div>
+              <div style="font-size: 14px; color: var(--ink); line-height: 1.6;">Navigate to <strong>"My Files"</strong> or <strong>"Downloads"</strong> — wherever you saved your PDF. Find your file named <strong>LastName_FirstName_GoldenAge.pdf</strong> and click it to select it. Then click <strong>"Open."</strong></div>
+            </div>
+
+            <div style="display: flex; gap: 14px; align-items: flex-start; background: var(--green-pale); border: 2px solid var(--green); border-radius: 6px; padding: 12px 16px;">
+              <div style="background: var(--green); color: white; font-family: Georgia, "Times New Roman", Times, serif; font-size: 15px; font-weight: 700; border-radius: 50%; width: 30px; height: 30px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">6</div>
+              <div style="font-size: 14px; color: var(--ink); line-height: 1.6;"><strong>Last step!</strong> Once your file appears attached to the assignment, click the big <strong>"Turn In"</strong> button. When it asks you to confirm, click <strong>"Turn In"</strong> again. You will see a confirmation that your work was submitted. <strong>You are done! ✅</strong></div>
+            </div>
+
+          </div>
+        </div>
+
+        <div style="background: var(--royal-pale); border: 2px solid var(--royal); border-radius: 8px; padding: 14px 20px; font-size: 14px; color: var(--ink); line-height: 1.7; text-align: center;">
+          🙋 <strong>Having trouble?</strong> Raise your hand and ask for help before the period ends. Do not wait until you get home — submit before you leave class today.
+        </div>
+
+        <div class="actions-bar" style="margin-top: 20px;">
+          <button class="btn btn-royal" onclick="window.print()">🖨 Print / Save as PDF</button>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <div class="footer-inner">
+      <div class="footer-school">East Jessamine Middle School</div>
+      <div class="footer-accent"></div>
+      <div class="footer-class">7th Grade World History · 600–1600 CE Unit · Virtual Field Trip</div>
+    </div>
+  </div>
+
+</body>
+</html>
