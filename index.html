@@ -1,9 +1,11 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Places of the Golden Age — Virtual Field Trip</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&family=Lato:wght@300;400;700&family=Cormorant+SC:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
   :root {
     --royal: #003087;
@@ -31,7 +33,7 @@
     background-image:
       radial-gradient(ellipse at 0% 0%, rgba(0,48,135,0.06) 0%, transparent 50%),
       radial-gradient(ellipse at 100% 100%, rgba(26,122,26,0.05) 0%, transparent 50%);
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Lato', sans-serif;
     color: var(--ink);
     min-height: 100vh;
     padding: 0 0 60px;
@@ -69,7 +71,7 @@
   }
 
   .hero-eyebrow {
-    font-family: Georgia, "Times New Roman", Times, serif;
+    font-family: 'Cormorant SC', serif;
     font-size: 11px;
     letter-spacing: 5px;
     color: rgba(255,255,255,0.6);
@@ -79,7 +81,7 @@
   }
 
   .hero h1 {
-    font-family: Georgia, "Times New Roman", Times, serif;
+    font-family: 'Cormorant Garamond', serif;
     font-size: 58px;
     font-weight: 700;
     color: #FFFFFF;
@@ -95,7 +97,7 @@
   }
 
   .hero-sub {
-    font-family: Georgia, "Times New Roman", Times, serif;
+    font-family: 'Cormorant Garamond', serif;
     font-size: 20px;
     font-weight: 300;
     font-style: italic;
@@ -121,7 +123,7 @@
     padding: 5px 16px;
     font-size: 12px;
     color: rgba(255,255,255,0.8);
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Lato', sans-serif;
     letter-spacing: 1px;
   }
 
@@ -160,7 +162,7 @@
     border: none;
     border-bottom: 2px solid var(--mid-grey);
     padding: 5px 2px;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Lato', sans-serif;
     font-size: 15px;
     color: var(--ink);
     background: transparent;
@@ -204,7 +206,7 @@
   }
 
   .big-question-text {
-    font-family: Georgia, "Times New Roman", Times, serif;
+    font-family: 'Cormorant Garamond', serif;
     font-size: 26px;
     font-weight: 600;
     font-style: italic;
@@ -260,7 +262,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    font-family: Georgia, "Times New Roman", Times, serif;
+    font-family: 'Cormorant Garamond', serif;
     font-size: 22px;
     font-weight: 700;
     color: white;
@@ -270,7 +272,7 @@
   .step-header-text { flex: 1; }
 
   .step-title {
-    font-family: Georgia, "Times New Roman", Times, serif;
+    font-family: 'Cormorant SC', serif;
     font-size: 18px;
     font-weight: 600;
     color: white;
@@ -352,7 +354,7 @@
   .dest-emoji { font-size: 24px; flex-shrink: 0; margin-top: 2px; }
 
   .dest-name {
-    font-family: Georgia, "Times New Roman", Times, serif;
+    font-family: 'Cormorant Garamond', serif;
     font-size: 17px;
     font-weight: 700;
     color: white;
@@ -388,33 +390,6 @@
     border-radius: 4px;
     transition: background 0.2s;
   }
-
-  /* ===== DISTRICT-SAFE LINK DISPLAY ===== */
-  .dest-link {
-    cursor: default;
-    user-select: text;
-  }
-  .url-text {
-    margin-top: 8px;
-    padding: 8px 10px;
-    border-radius: 6px;
-    border: 1px dashed var(--mid-grey);
-    background: var(--off-white);
-    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-    font-size: 12px;
-    color: var(--ink);
-    word-break: break-all;
-    line-height: 1.4;
-  }
-  .url-text small {
-    display: inline-block;
-    font-size: 10px;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    color: var(--dark-grey);
-    margin-right: 6px;
-  }
-
 
   .dest-link.royal-link {
     color: var(--royal);
@@ -512,7 +487,7 @@
     border: 2px solid var(--light-grey);
     border-radius: 6px;
     padding: 12px 14px;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Lato', sans-serif;
     font-size: 14px;
     color: var(--ink);
     background: var(--white);
@@ -552,7 +527,7 @@
     border: 2px solid var(--light-grey);
     border-radius: 6px;
     padding: 9px 12px;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Lato', sans-serif;
     font-size: 14px;
     color: var(--ink);
     background: var(--white);
@@ -628,7 +603,7 @@
   .btn {
     padding: 12px 28px;
     border-radius: 6px;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Lato', sans-serif;
     font-size: 13px;
     font-weight: 700;
     letter-spacing: 1px;
@@ -674,7 +649,7 @@
   }
 
   .footer-school {
-    font-family: Georgia, "Times New Roman", Times, serif;
+    font-family: 'Cormorant Garamond', serif;
     font-size: 16px;
     font-weight: 600;
     color: var(--royal);
@@ -769,11 +744,6 @@
           <strong>How to explore:</strong> Click the links below and spend a few minutes browsing each place before you decide. Some have 360° views, some have photo galleries, some have detailed histories. Follow what pulls your attention. When one place makes you want to keep reading — that's your destination.
         </div>
 
-        <div class="instr royal-accent" style="margin-top: 12px;">
-          <strong>District-safe note:</strong> Links are shown as copy/paste text (not clickable) to avoid web-filter blocks. If a site is blocked, try a different destination.
-        </div>
-
-
         <div class="section-divider"><span>🕌 Mosques & Sacred Sites</span></div>
         <div class="destinations-grid">
 
@@ -788,8 +758,7 @@
             <div class="dest-body">
               <span class="dest-tag mosque">Mosque</span>
               <div class="dest-desc">One of the most stunning examples of Islamic architecture ever built — famous for its forest of 856 columns with striped red-and-white arches. Built by the Umayyads in conquered Spain.</div>
-              <div class="dest-link royal-link">🌐 Explore on Google Arts</div>
-              <div class="url-text"><small>Copy/paste:</small> https://artsandculture.google.com/story/the-mosque-cathedral-of-cordoba-spain-unesco/rwWx9aQi1Pc8Lg?hl=en</div>
+              <a class="dest-link royal-link" href="https://artsandculture.google.com/story/the-mosque-cathedral-of-cordoba-spain-unesco/rwWx9aQi1Pc8Lg?hl=en" target="_blank">🌐 Explore on Google Arts</a>
             </div>
           </div>
 
@@ -804,8 +773,7 @@
             <div class="dest-body">
               <span class="dest-tag mosque">Mosque / Cathedral</span>
               <div class="dest-desc">Originally a Byzantine cathedral, converted to a mosque after the Ottoman conquest. One of the greatest architectural achievements in human history — its massive dome still inspires awe.</div>
-              <div class="dest-link royal-link">🌐 360° Virtual Tour</div>
-              <div class="url-text"><small>Copy/paste:</small> https://360tr.com/hagia-sophia-upper-floor-1-panorama-virtual-tour_89ef68d7b5_en.html</div>
+              <a class="dest-link royal-link" href="https://360tr.com/hagia-sophia-upper-floor-1-panorama-virtual-tour_89ef68d7b5_en.html" target="_blank">🌐 360° Virtual Tour</a>
             </div>
           </div>
 
@@ -820,8 +788,7 @@
             <div class="dest-body">
               <span class="dest-tag mosque">Sacred Site</span>
               <div class="dest-desc">The Prophet's Mosque — built by Muhammad himself. The second holiest site in Islam and the political heart of the Rashidun Caliphate. Expanded dramatically over the centuries.</div>
-              <div class="dest-link green-link">🌐 360° Immersive VR Tour</div>
-              <div class="url-text"><small>Copy/paste:</small> https://vr.qurancomplex.gov.sa/msq/</div>
+              <a class="dest-link green-link" href="https://vr.qurancomplex.gov.sa/msq/" target="_blank">🌐 360° Immersive VR Tour</a>
             </div>
           </div>
 
@@ -841,8 +808,7 @@
             <div class="dest-body">
               <span class="dest-tag palace">Palace</span>
               <div class="dest-desc">The last great Islamic palace in Europe — a jaw-dropping complex of courtyards, fountains, geometric tile work, and Arabic calligraphy carved into every surface. A monument to Islamic civilization at its peak.</div>
-              <div class="dest-link royal-link">🌐 Explore on Google Arts</div>
-              <div class="url-text"><small>Copy/paste:</small> https://artsandculture.google.com/entity/alhambra/m07h_j?hl=en</div>
+              <a class="dest-link royal-link" href="https://artsandculture.google.com/entity/alhambra/m07h_j?hl=en" target="_blank">🌐 Explore on Google Arts</a>
             </div>
           </div>
 
@@ -857,8 +823,7 @@
             <div class="dest-body">
               <span class="dest-tag palace">Palace / Ruins</span>
               <div class="dest-desc">What remains of the once-great Abbasid capital. The round city of Baghdad was considered the most sophisticated urban center in the medieval world — explore what historians have pieced together.</div>
-              <div class="dest-link green-link">🌐 World History Encyclopedia</div>
-              <div class="url-text"><small>Copy/paste:</small> https://www.worldhistory.org/ctesiphon/</div>
+              <a class="dest-link green-link" href="https://www.worldhistory.org/ctesiphon/" target="_blank">🌐 World History Encyclopedia</a>
             </div>
           </div>
 
@@ -878,8 +843,7 @@
             <div class="dest-body">
               <span class="dest-tag knowledge">Knowledge</span>
               <div class="dest-desc">The greatest library and research center of the medieval world. Scholars translated Greek, Persian, and Indian texts here — laying the foundation for algebra, astronomy, and medicine. Destroyed by the Mongols in 1258.</div>
-              <div class="dest-link green-link">🌐 1001 Inventions</div>
-              <div class="url-text"><small>Copy/paste:</small> https://www.1001inventions.com/house-of-wisdom/</div>
+              <a class="dest-link green-link" href="https://www.1001inventions.com/house-of-wisdom/" target="_blank">🌐 1001 Inventions</a>
             </div>
           </div>
 
@@ -894,8 +858,7 @@
             <div class="dest-body">
               <span class="dest-tag knowledge">Knowledge</span>
               <div class="dest-desc">Over 700,000 manuscripts survive in Timbuktu's private libraries — covering astronomy, mathematics, medicine, and Islamic law. A testament to how far Islamic scholarship spread through trade.</div>
-              <div class="dest-link green-link">🌐 Explore on Google Arts</div>
-              <div class="url-text"><small>Copy/paste:</small> https://artsandculture.google.com/project/timbuktu-manuscripts</div>
+              <a class="dest-link green-link" href="https://artsandculture.google.com/project/timbuktu-manuscripts" target="_blank">🌐 Explore on Google Arts</a>
             </div>
           </div>
 
@@ -915,8 +878,7 @@
             <div class="dest-body">
               <span class="dest-tag trade">Trade City</span>
               <div class="dest-desc">The jewel of the Silk Road — where paper-making first entered the Islamic world after the Battle of Talas. A crossroads of Chinese, Persian, Arab, and Indian civilization.</div>
-              <div class="dest-link royal-link">🌐 Explore on Google Arts</div>
-              <div class="url-text"><small>Copy/paste:</small> https://artsandculture.google.com/entity/samarkand/m0dl3g?hl=en</div>
+              <a class="dest-link royal-link" href="https://artsandculture.google.com/entity/samarkand/m0dl3g?hl=en" target="_blank">🌐 Explore on Google Arts</a>
             </div>
           </div>
 
@@ -931,8 +893,7 @@
             <div class="dest-body">
               <span class="dest-tag trade">Trade Route</span>
               <div class="dest-desc">Abbasid merchants dominated the Indian Ocean long before European explorers arrived. Arab dhow captains connected three continents — carrying silk, spices, porcelain, and ideas.</div>
-              <div class="dest-link green-link">🌐 OER Project</div>
-              <div class="url-text"><small>Copy/paste:</small> https://www.oerproject.com/OER-Materials/OER-Media/HTML-Articles/Origins/Unit5/Indian-Ocean-Routes</div>
+              <a class="dest-link green-link" href="https://www.oerproject.com/OER-Materials/OER-Media/HTML-Articles/Origins/Unit5/Indian-Ocean-Routes" target="_blank">🌐 OER Project</a>
             </div>
           </div>
 
@@ -1146,23 +1107,23 @@
           <div style="display: flex; flex-direction: column; gap: 10px;">
 
             <div style="display: flex; gap: 14px; align-items: flex-start; background: var(--white); border: 1px solid var(--mid-grey); border-radius: 6px; padding: 12px 16px;">
-              <div style="background: var(--royal); color: white; font-family: Georgia, "Times New Roman", Times, serif; font-size: 15px; font-weight: 700; border-radius: 50%; width: 30px; height: 30px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">1</div>
+              <div style="background: var(--royal); color: white; font-family: 'Cormorant SC', serif; font-size: 15px; font-weight: 700; border-radius: 50%; width: 30px; height: 30px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">1</div>
               <div style="font-size: 14px; color: var(--ink); line-height: 1.6;">Click the <strong>"🖨 Print / Save as PDF"</strong> button below. A print dialog box will open on your screen.</div>
             </div>
 
             <div style="display: flex; gap: 14px; align-items: flex-start; background: var(--white); border: 1px solid var(--mid-grey); border-radius: 6px; padding: 12px 16px;">
-              <div style="background: var(--royal); color: white; font-family: Georgia, "Times New Roman", Times, serif; font-size: 15px; font-weight: 700; border-radius: 50%; width: 30px; height: 30px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">2</div>
+              <div style="background: var(--royal); color: white; font-family: 'Cormorant SC', serif; font-size: 15px; font-weight: 700; border-radius: 50%; width: 30px; height: 30px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">2</div>
               <div style="font-size: 14px; color: var(--ink); line-height: 1.6;">Look for the <strong>"Destination"</strong> dropdown at the top of the print dialog. Click the dropdown and select <strong>"Save as PDF."</strong></div>
             </div>
 
             <div style="display: flex; gap: 14px; align-items: flex-start; background: #FFF8E1; border: 1px solid #F0C040; border-radius: 6px; padding: 12px 16px;">
-              <div style="background: var(--green); color: white; font-family: Georgia, "Times New Roman", Times, serif; font-size: 15px; font-weight: 700; border-radius: 50%; width: 30px; height: 30px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">3</div>
+              <div style="background: var(--green); color: white; font-family: 'Cormorant SC', serif; font-size: 15px; font-weight: 700; border-radius: 50%; width: 30px; height: 30px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">3</div>
               <div style="font-size: 14px; color: var(--ink); line-height: 1.6;">Click <strong>"Save."</strong> A file name box will appear. <strong>Delete whatever is already there</strong> and type your file name exactly like this:<br>
               <span style="font-family: 'Courier New', monospace; background: var(--light-grey); padding: 2px 8px; border-radius: 3px; color: var(--royal);">LastName_FirstName_GoldenAge</span></div>
             </div>
 
             <div style="display: flex; gap: 14px; align-items: flex-start; background: var(--white); border: 1px solid var(--mid-grey); border-radius: 6px; padding: 12px 16px;">
-              <div style="background: var(--royal); color: white; font-family: Georgia, "Times New Roman", Times, serif; font-size: 15px; font-weight: 700; border-radius: 50%; width: 30px; height: 30px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">4</div>
+              <div style="background: var(--royal); color: white; font-family: 'Cormorant SC', serif; font-size: 15px; font-weight: 700; border-radius: 50%; width: 30px; height: 30px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">4</div>
               <div style="font-size: 14px; color: var(--ink); line-height: 1.6;">Choose where to save it. Select <strong>"My Files"</strong> or <strong>"Downloads"</strong> on your Chromebook. Then click <strong>"Save."</strong> Your PDF is now saved on your device.</div>
             </div>
 
@@ -1175,32 +1136,32 @@
           <div style="display: flex; flex-direction: column; gap: 10px;">
 
             <div style="display: flex; gap: 14px; align-items: flex-start; background: var(--white); border: 1px solid var(--mid-grey); border-radius: 6px; padding: 12px 16px;">
-              <div style="background: var(--green); color: white; font-family: Georgia, "Times New Roman", Times, serif; font-size: 15px; font-weight: 700; border-radius: 50%; width: 30px; height: 30px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">1</div>
+              <div style="background: var(--green); color: white; font-family: 'Cormorant SC', serif; font-size: 15px; font-weight: 700; border-radius: 50%; width: 30px; height: 30px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">1</div>
               <div style="font-size: 14px; color: var(--ink); line-height: 1.6;">Open a new tab and go to <strong>Google Classroom</strong>. Find your <strong>7th Grade World History</strong> class and click on it.</div>
             </div>
 
             <div style="display: flex; gap: 14px; align-items: flex-start; background: var(--white); border: 1px solid var(--mid-grey); border-radius: 6px; padding: 12px 16px;">
-              <div style="background: var(--green); color: white; font-family: Georgia, "Times New Roman", Times, serif; font-size: 15px; font-weight: 700; border-radius: 50%; width: 30px; height: 30px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">2</div>
+              <div style="background: var(--green); color: white; font-family: 'Cormorant SC', serif; font-size: 15px; font-weight: 700; border-radius: 50%; width: 30px; height: 30px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">2</div>
               <div style="font-size: 14px; color: var(--ink); line-height: 1.6;">Click on the <strong>"Classwork"</strong> tab at the top. Find the assignment called <strong>"Places of the Golden Age — Virtual Field Trip"</strong> and click on it.</div>
             </div>
 
             <div style="display: flex; gap: 14px; align-items: flex-start; background: var(--white); border: 1px solid var(--mid-grey); border-radius: 6px; padding: 12px 16px;">
-              <div style="background: var(--green); color: white; font-family: Georgia, "Times New Roman", Times, serif; font-size: 15px; font-weight: 700; border-radius: 50%; width: 30px; height: 30px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">3</div>
+              <div style="background: var(--green); color: white; font-family: 'Cormorant SC', serif; font-size: 15px; font-weight: 700; border-radius: 50%; width: 30px; height: 30px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">3</div>
               <div style="font-size: 14px; color: var(--ink); line-height: 1.6;">Click the <strong>"View Assignment"</strong> button. On the assignment page, look for the <strong>"Add or Create"</strong> button and click it.</div>
             </div>
 
             <div style="display: flex; gap: 14px; align-items: flex-start; background: var(--white); border: 1px solid var(--mid-grey); border-radius: 6px; padding: 12px 16px;">
-              <div style="background: var(--green); color: white; font-family: Georgia, "Times New Roman", Times, serif; font-size: 15px; font-weight: 700; border-radius: 50%; width: 30px; height: 30px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">4</div>
+              <div style="background: var(--green); color: white; font-family: 'Cormorant SC', serif; font-size: 15px; font-weight: 700; border-radius: 50%; width: 30px; height: 30px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">4</div>
               <div style="font-size: 14px; color: var(--ink); line-height: 1.6;">A menu will appear. Select <strong>"File"</strong> from the options. Then click <strong>"Select files from your device."</strong></div>
             </div>
 
             <div style="display: flex; gap: 14px; align-items: flex-start; background: var(--white); border: 1px solid var(--mid-grey); border-radius: 6px; padding: 12px 16px;">
-              <div style="background: var(--green); color: white; font-family: Georgia, "Times New Roman", Times, serif; font-size: 15px; font-weight: 700; border-radius: 50%; width: 30px; height: 30px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">5</div>
+              <div style="background: var(--green); color: white; font-family: 'Cormorant SC', serif; font-size: 15px; font-weight: 700; border-radius: 50%; width: 30px; height: 30px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">5</div>
               <div style="font-size: 14px; color: var(--ink); line-height: 1.6;">Navigate to <strong>"My Files"</strong> or <strong>"Downloads"</strong> — wherever you saved your PDF. Find your file named <strong>LastName_FirstName_GoldenAge.pdf</strong> and click it to select it. Then click <strong>"Open."</strong></div>
             </div>
 
             <div style="display: flex; gap: 14px; align-items: flex-start; background: var(--green-pale); border: 2px solid var(--green); border-radius: 6px; padding: 12px 16px;">
-              <div style="background: var(--green); color: white; font-family: Georgia, "Times New Roman", Times, serif; font-size: 15px; font-weight: 700; border-radius: 50%; width: 30px; height: 30px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">6</div>
+              <div style="background: var(--green); color: white; font-family: 'Cormorant SC', serif; font-size: 15px; font-weight: 700; border-radius: 50%; width: 30px; height: 30px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">6</div>
               <div style="font-size: 14px; color: var(--ink); line-height: 1.6;"><strong>Last step!</strong> Once your file appears attached to the assignment, click the big <strong>"Turn In"</strong> button. When it asks you to confirm, click <strong>"Turn In"</strong> again. You will see a confirmation that your work was submitted. <strong>You are done! ✅</strong></div>
             </div>
 
